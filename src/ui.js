@@ -53,10 +53,11 @@ cameras[cameraStream1].setParent(document.getElementById('camera1'));
 cameras[cameraStream2].setParent(document.getElementById('camera2'));
 
 const indicatorColors = {
-    'disconnected': '#D32F2F',
-    'connected': 'rgb(255, 217, 0)',
-    'loading-failed': '#FF8300',
-    'loaded': '#42C752'
+    'disconnected': '#D32F2F', //red
+    'connected': '#FFD900', //yellow
+    'loading-failed': '#FF8300', //orange
+    'loaded': '#42C752', //green
+    'camera-failure': 'hotpink' //hot pink
 }
 
 function showPanel(elem, id) {
