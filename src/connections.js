@@ -56,14 +56,15 @@ function onRobotConnection(connected) {
 
 function loadComponents() {
     loadCameras();
+    // Add any future components here
 }
 
 function loadCameras() {
     let promises = cameras.map(camera => camera.loadCameraStream());
 
-    Promise.all(promises).then(successess => {
-        successess = successess.map(success => !success ? connection.status = 'loading-failed' : 'success');
+    Promise.all(promises).then(successes => {
+        successes = successes.map(success => connection.status = success ?  'success' : 'camera-failure');
 
-        if (successess.every(elem => elem)) connection.status = 'loaded';
+        if (successes.every(elem => elem)) connection.status = 'loaded';
     }).catch(_ => connection.status = 'loading-failed');  // Component errored out
 }
