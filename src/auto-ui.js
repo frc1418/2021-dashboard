@@ -15,16 +15,16 @@ autoButton.addEventListener('click', () => {
     showPanel(autoPanel, 'auto');
 });
 
-autoSelect.addEventListener('change', (event) => {
-    NetworkTables.putValue('/SmartDashboard/Autonomous Mode/active', event.target.value);
-});
+autoSelect.onchange = function() {
+    NetworkTables.putValue('/autonomous/selected autonomous', autoSelect.value);
+};
 
 startingPosSelect.addEventListener('change', (event) => {
     NetworkTables.putValue('/autonomous/starting_position', event.target.value);
 });
 
-// Consider key = /SmartDashboard/Autonomous Mode/options
-NetworkTables.addKeyListener('/SmartDashboard/Auto List', (_, modes, __) => {
+
+NetworkTables.addKeyListener('/autonomous/autonomous options', (_, modes, __) => {
     autoSelect.innerHTML = '';
 
     for (let modeName of modes.reverse()) {
